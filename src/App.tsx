@@ -28,9 +28,15 @@ const App = () => {
       <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name="Home" component={Home} options={{
           title: 'LearnTech',
+          headerShown: false
         }} />
         <Stack.Screen name="Login" component={Login} options={{
           title: 'Login',
+          headerShown: false
+        }} />
+        <Stack.Screen name="Register" component={Register} options={{
+          title: 'Register',
+          headerShown: false
         }} />
       </Stack.Navigator>
     </NavigationContainer>

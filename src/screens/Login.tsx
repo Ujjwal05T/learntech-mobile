@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Image, ScrollView, Alert } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { View, Text, TextInput, TouchableOpacity, Image, ScrollView, Alert, StatusBar } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../App'
 
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>
 
 const Login = ({navigation}:LoginProps) => {
-//   const navigation = useNavigation<LoginScreenNavigationProp>()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -67,16 +65,15 @@ const Login = ({navigation}:LoginProps) => {
   }
 
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView className="flex-1 bg-white pt-16">
+      <StatusBar barStyle="light-content" />
       <View className="p-6 pt-12">
         {/* Logo */}
         <View className="items-center mb-10">
-          {/* <Image 
-            source={require('../../assets/logo.png')}
-            className="w-40 h-40"
-            resizeMode="contain"
-          /> */}
-          <Text className="text-2xl font-bold text-blue-600 mt-4">LearnTech</Text>
+          <Image 
+            source={require('../../assets/LearnTech.png')}
+            className="w-20 rounded-3xl h-20"
+          />
         </View>
         
         {/* Header */}
@@ -91,7 +88,7 @@ const Login = ({navigation}:LoginProps) => {
           <View>
             <Text className="text-gray-700 mb-2 font-medium">Email</Text>
             <TextInput
-              className="bg-gray-100 p-4 rounded-lg text-gray-800"
+              className="bg-gray-100 p-4 rounded-lg text-gray-800 mb-4"
               placeholder="Enter your email"
               placeholderTextColor="#9ca3af"
               keyboardType="email-address"
@@ -100,7 +97,7 @@ const Login = ({navigation}:LoginProps) => {
               onChangeText={setEmail}
             />
             {errors.email ? (
-              <Text className="text-red-500 mt-1">{errors.email}</Text>
+              <Text className="text-red-500 mt-0 mb-2">{errors.email}</Text>
             ) : null}
           </View>
           
@@ -149,7 +146,7 @@ const Login = ({navigation}:LoginProps) => {
           {/* Register */}
           <View className="flex-row justify-center mt-6">
             <Text className="text-gray-600">Don't have an account? </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <TouchableOpacity onPress={() => navigation.replace('Register')}>
               <Text className="text-blue-600 font-semibold">Sign Up</Text>
             </TouchableOpacity>
           </View>
